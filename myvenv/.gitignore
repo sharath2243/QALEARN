@@ -1,0 +1,12 @@
+# Ignore virtual environment
+venv/
+.myvenv/
+__pycache__/
+*.pyc
+
+# Ignore env vars or secrets
+.env
+*.env
+
+# VS Code junk
+.vscode/
