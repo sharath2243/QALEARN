@@ -43,7 +43,7 @@ def read_data(): # function for reading the data
         reader=list(csv.DictReader(csvfile)) # reading data from csv
         return reader 
     
-@pytest.mark.parametrize("test", read_data())
+@pytest.mark.parametrize("test", read_data()) #read csv from pytest
 def test_data(test):
     driver=webdriver.Chrome() #intialised web driver 
     login=Login_pom(driver) #created a class object
