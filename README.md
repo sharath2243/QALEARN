@@ -65,7 +65,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Ran test cases directly using `pytest`
 
 ---
-## ✅ Day 6 - Progress Summary
+## 📂 Day 6 - Progress Summary
 
 - Integrated `pytest.fixture` for WebDriver setup and teardown.
 - Implemented **Product POM** with:
