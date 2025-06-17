@@ -1,4 +1,4 @@
-'''
+
 # Day-1 : Strated learning completed searching "django" keyword in "python.org" website , used : By(Name) ,webdriver function, then get used to extract website name,find_element,assertion use etc,.
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -93,7 +93,7 @@ except Exception as e:
     print("test failed, ",e)
 finally:
     dv.quit() #leave the browser
-'''
+
 def test_py():
     assert 3*8==25 #day 5(checking pytest with multiple test cases)
 

@@ -12,6 +12,7 @@ class Login_pom:
         self.password=(By.ID,"password")
         self.login_button=(By.ID,"login-button")
         self.error=(By.XPATH,"//*[contains(text(),'Epic')]")
+        self.logout_button=(By.ID,"logout_sidebar_link")
     
     def load(self): #load function to load the website
         self.driver.get(self.url)
@@ -26,7 +27,12 @@ class Login_pom:
             return None 
     
     def login(self,usr,pwd): #main login function which is running with the help of constructor
-        WDW(self.driver,5).until(ec.visibility_of_element_located(self.username))
+        WDW(self.driver,2).until(ec.visibility_of_element_located(self.username))
         self.driver.find_element(*self.username).send_keys(usr)
         self.driver.find_element(*self.password).send_keys(pwd)
         self.driver.find_element(*self.login_button).click()
+
+    def logout(self): #Day-6: function to logout check 
+        self.driver.find_element(By.ID, "react-burger-menu-btn").click()  #open the main menu
+        wait=WDW(self.driver,6)
+        wait.until(ec.element_to_be_clickable((By.ID,"logout_sidebar_link"))).click() #logout button working check
