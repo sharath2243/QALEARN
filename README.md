@@ -65,6 +65,16 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Ran test cases directly using `pytest`
 
 ---
+## ✅ Day 6 - Progress Summary
+
+- Integrated `pytest.fixture` for WebDriver setup and teardown.
+- Implemented **Product POM** with:
+  - Single product add to cart
+  - Cart icon click
+  - Basic error handling
+- Combined Login + Product POM test (end-to-end)
+- Added clean assertions for product add/cart
+
 
 ## 🧠 Skills Covered So Far
 
@@ -75,10 +85,13 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅ Exception Handling: `TimeoutException`, `WebDriverException`, generic `Exception`
 - ✅ Assertions for validation
 - ✅ Reusable and modular functions
-- ✅ Page Object Model (POM)
+- ✅ Page Object Model (POM) (for login)
 - ✅ CSV Data-Driven Testing
-- ✅ Pytest basics: test discovery, assertions, parameterization
-
+- ✅ Pytest basics: test discovery, assertions, parameterization(`@pytest.mark.parametrize`)
+- ✅`pytest.fixture` usage for reusable WebDriver setup
+- ✅Basic Page Object Model (POM) structure for product interaction
+- ✅Error handling with `try-except` in POM
+- ✅Writing assertions for UI interactions (add to cart, cart view)
 ---
 
 ## 🚀 How to Run
