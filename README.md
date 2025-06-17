@@ -74,7 +74,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
   - Basic error handling
 - Combined Login + Product POM test (end-to-end)
 - Added clean assertions for product add/cart
-
+---
 
 ## 🧠 Skills Covered So Far
 
