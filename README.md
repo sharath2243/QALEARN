@@ -65,7 +65,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Ran test cases directly using `pytest`
 
 ---
-## 📂 Day 6 - Progress Summary
+### 📂 Day 6 - Progress Summary
 
 - Integrated `pytest.fixture` for WebDriver setup and teardown.
 - Implemented **Product POM** with:
@@ -75,7 +75,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Combined Login + Product POM test (end-to-end)
 - Added clean assertions for product add/cart
 ---
-📅 Day 7 - Summary (Short)
+### 📅 Day 7 - Summary
 -Read multiple product IDs from CSV and added them dynamically.
 -Introduced time.sleep() delays for better step visibility.
 -Added product title check (details page navigation + back button).
