@@ -69,13 +69,19 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 
 - Integrated `pytest.fixture` for WebDriver setup and teardown.
 - Implemented **Product POM** with:
-  - Single product add to cart
+  - Single product add to cart 
   - Cart icon click
   - Basic error handling
 - Combined Login + Product POM test (end-to-end)
 - Added clean assertions for product add/cart
 ---
-
+📅 Day 7 - Summary (Short)
+-Read multiple product IDs from CSV and added them dynamically.
+-Introduced time.sleep() delays for better step visibility.
+-Added product title check (details page navigation + back button).
+-Implemented single product removal from cart.
+-No changes in login flow.
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -86,12 +92,17 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅ Assertions for validation
 - ✅ Reusable and modular functions
 - ✅ Page Object Model (POM) (for login)
-- ✅ CSV Data-Driven Testing
+- ✅ CSV Data-Driven Testing (for login)
 - ✅ Pytest basics: test discovery, assertions, parameterization(`@pytest.mark.parametrize`)
 - ✅`pytest.fixture` usage for reusable WebDriver setup
 - ✅Basic Page Object Model (POM) structure for product interaction
 - ✅Error handling with `try-except` in POM
 - ✅Writing assertions for UI interactions (add to cart, cart view)
+- ✅Introducing controlled delays using time.sleep().
+- ✅Page navigation checks and UI validation.
+- ✅Modular function handling inside Page Object Model.
+- ✅Handling WebDriverWait alongside manual wait when needed.
+- 
 ---
 
 ## 🚀 How to Run
