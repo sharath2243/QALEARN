@@ -51,16 +51,17 @@ def read_login_data(): # function for reading the data
         reader=list(csv.DictReader(csvfile)) # reading data from csv
         return reader 
     
-<<<<<<< HEAD:test_login_pom.py
-@pytest.mark.parametrize("test", read_data()) #read csv from pytest
-def test_data(test):
-    driver=webdriver.Chrome() #intialised web driver 
-=======
+def read_add_prod(): #day-7:function to reading the add product data
+    filepath=os.path.join(os.path.dirname(__file__),"..","Csv_files","add_product.csv")
+    with open(filepath,newline='') as csvfile:
+        reader=list(csv.DictReader(csvfile))
+        return reader
+    
+
 @pytest.mark.parametrize("test", read_login_data()) 
 def test_data(setup,test):
     driver=setup #using pytest.fixture setup
 
->>>>>>> 49010b7 (learnt about pytest.fixture and used it, implemeted logout ,cretaed product_pom.py and  added and checked a single product day-6):Tests/test_login_pom.py
     login=Login_pom(driver) #created a class object
     login.load() # calling load function,loading website 
     login.login(test["user"].strip(),test["pwd"].strip()) #calling login function, with username and password parameters(used strip because of parsing issue)
@@ -73,16 +74,22 @@ def test_data(setup,test):
         assert err is None, "no errors still login not sucessful!"
         print(f"[✅ PASS] Login successful!")
        
-        product=Product_pom(driver) #day-6 :chceking for 1 product add
-        msg=product.add_product() #function call for adding 1st product seen
-        assert msg is None,"product adding failed"
-        msg_2=product.go_to_cart() #go to cart function call
-        assert msg_2 is None,"cart check failed" 
-        time.sleep(5)
-        login.logout()
 
-    time.sleep(2)
-<<<<<<< HEAD:test_login_pom.py
-    driver.quit()
-=======
->>>>>>> 49010b7 (learnt about pytest.fixture and used it, implemeted logout ,cretaed product_pom.py and  added and checked a single product day-6):Tests/test_login_pom.py
+        product=Product_pom(driver) #created a class object
+        
+        product.poduct_title()
+
+        for item in read_add_prod(): #day-7:iterating through csv read function
+            time.sleep(2) 
+            res=product.add_product(item["product_id"]) #adding each product
+            assert res is None,res
+
+
+        time.sleep(4) #day-7: knowingly including delays..
+        product.go_to_cart()
+
+        time.sleep(4)
+        product.remove_product()
+
+        time.sleep(4)
+        login.logout()

@@ -33,6 +33,8 @@ class Login_pom:
         self.driver.find_element(*self.login_button).click()
 
     def logout(self): #Day-6: function to logout check 
-        self.driver.find_element(By.ID, "react-burger-menu-btn").click()  #open the main menu
-        wait=WDW(self.driver,6)
+        WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID, "react-burger-menu-btn"))).click()  #open the main menu
+        wait=WDW(self.driver,4)
         wait.until(ec.element_to_be_clickable((By.ID,"logout_sidebar_link"))).click() #logout button working check
+
+    
