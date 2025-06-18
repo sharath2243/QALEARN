@@ -76,11 +76,11 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Added clean assertions for product add/cart
 ---
 ### 📅 Day 7 - Summary
--Read multiple product IDs from CSV and added them dynamically.
--Introduced time.sleep() delays for better step visibility.
--Added product title check (details page navigation + back button).
--Implemented single product removal from cart.
--No changes in login flow.
+- Read multiple product IDs from CSV and added them dynamically.
+- Introduced time.sleep() delays for better step visibility.
+- Added product title check (details page navigation + back button).
+- Implemented single product removal from cart.
+- No changes in login flow.
 ---
 ## 🧠 Skills Covered So Far
 
