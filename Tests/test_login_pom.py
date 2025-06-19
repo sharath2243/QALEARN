@@ -3,10 +3,13 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException,TimeoutException
 from POM.login_pom import Login_pom
 from POM.product_pom import Product_pom
+from POM.checkout_pom import Checkout_pom
 import time 
 import csv
 import pytest
 import os
+from datetime import datetime
+
 
 '''
 def read_data(file_path):
@@ -37,6 +40,7 @@ for test in test_cases:
         driver.quit() #quit
         time.sleep(2)
 '''
+
 #day-5: above same thing but with using pytest(without for loop and try catch finally)
 
 @pytest.fixture #day-6: using pytest.fixture for recurring setup-teardown
@@ -45,7 +49,7 @@ def setup():
     yield driver # to perform cleanup after tests are run (setup-teardown)
     driver.quit() #quit 
 
-def read_login_data(): # function for reading the data
+def read_login_data(): # function for reading the login data
     filepath = os.path.join(os.path.dirname(__file__),"..","Csv_files","login_details.csv")
     with open(filepath,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile)) # reading data from csv
@@ -56,10 +60,16 @@ def read_add_prod(): #day-7:function to reading the add product data
     with open(filepath,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile))
         return reader
-    
+
+def read_remove_prod(): #day-8:function to reading the remove product data
+    filepath=os.path.join(os.path.dirname(__file__),"..","Csv_files","remove_product.csv")
+    with open(filepath,newline='') as csvfile:
+        reader=list(csv.DictReader(csvfile))
+        return reader
 
 @pytest.mark.parametrize("test", read_login_data()) 
 def test_data(setup,test):
+
     driver=setup #using pytest.fixture setup
 
     login=Login_pom(driver) #created a class object
@@ -70,6 +80,8 @@ def test_data(setup,test):
     if test["expected"]=="fail": #used assertions for double check nd printing error or no error
         assert err is not None,"expected errors, but unexpected happenend!"
         print(f"[❌ FAIL as expected] Error message: {err}")
+       
+
     else:
         assert err is None, "no errors still login not sucessful!"
         print(f"[✅ PASS] Login successful!")
@@ -79,17 +91,59 @@ def test_data(setup,test):
         
         product.poduct_title()
 
-        for item in read_add_prod(): #day-7:iterating through csv read function
-            time.sleep(2) 
-            res=product.add_product(item["product_id"]) #adding each product
-            assert res is None,res
+        try:
+            for item in read_add_prod(): #day-7:iterating through csv read function
+                time.sleep(2) 
+                res=product.add_product(item["product_id"]) #adding each product
+                assert res is None,res
+            print("[✅ PASS] Product added successfuly!")
+
+        except Exception as e:
+            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+            driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png") #day-8: introduced save screenshots if any error
+            raise e
+
+        try:
+            for item in read_remove_prod(): #day-8: iterating through csv read function
+                time.sleep(2)
+                res=product.remove_product(item["product_id"])
+                assert res is None,res
+            print("[✅ PASS] Products removed successfuly!")
+
+        except Exception as e:
+            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+            driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png")
+            raise e
 
 
         time.sleep(4) #day-7: knowingly including delays..
-        product.go_to_cart()
 
-        time.sleep(4)
-        product.remove_product()
+        product.add_product("add-to-cart-sauce-labs-bolt-t-shirt") #day-8:after removing everything 1 item i added just to ensure not empty cart
+        
+        try:
+            product.go_to_cart()
+        except Exception as e:
+            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+            driver.save_screenshot(f"Screenshots/go_to_cart_f_{ts}.png") 
+            raise e
 
+        checkout=Checkout_pom(driver) #checkout driver intialisation
+        
         time.sleep(4)
-        login.logout()
+        
+        try: #day-8: checkout process
+            checkout.checkout()
+        except Exception as e:
+            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+            driver.save_screenshot(f"Screenshots/checkout_f_{ts}.png")
+            raise e
+
+        time.sleep(60)
+
+        try:
+            login.logout()
+            print("[✅ PASS] logout successful!")
+        except Exception as e:
+            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+            driver.save_screenshot(f"Screenshots/logout_f_{ts}.png")
+            raise e
