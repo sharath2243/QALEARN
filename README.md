@@ -82,6 +82,11 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Implemented single product removal from cart.
 - No changes in login flow.
 ---
+### 📅 Day 8 - Automation Progress
+- Today, I extended my test automation framework by adding support for the checkout flow using a dedicated Page Object Model (POM) class. This class handles entering user details (First Name, Last Name, Zip Code) and continues the checkout process. I also refactored the product removal functionality to support multiple removals via CSV input, mirroring how products are added/removed.
+
+- Additionally, I implemented robust error handling for all major test flows — including per-item screenshot capture in case of failure. This adds traceability and debugging ease to the test suite.
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -102,7 +107,12 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Page navigation checks and UI validation.
 - ✅Modular function handling inside Page Object Model.
 - ✅Handling WebDriverWait alongside manual wait when needed.
-- 
+- ✅ Building and integrating a new POM class (Checkout functionality)
+- ✅ Improved exception handling in test class with per-case screenshots
+- ✅ Explored real-world bugs through manual (exploratory) testing
+✅ Reported actual bugs in the live application:
+    -✅Checkout input fields unresponsive to manual typing
+    -✅Remove button non-functional when clicked manually
 ---
 
 ## 🚀 How to Run
