@@ -110,9 +110,9 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅ Building and integrating a new POM class (Checkout functionality)
 - ✅ Improved exception handling in test class with per-case screenshots
 - ✅ Explored real-world bugs through manual (exploratory) testing
-✅ Reported actual bugs in the live application:
+** - ✅ Reported actual bugs in the live application:
     -✅Checkout input fields unresponsive to manual typing
-    -✅Remove button non-functional when clicked manually
+    -✅Remove button non-functional when clicked manually **
 ---
 
 ## 🚀 How to Run
