@@ -111,8 +111,8 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅ Improved exception handling in test class with per-case screenshots
 - ✅ Explored real-world bugs through manual (exploratory) testing
 - __✅ Reported actual bugs in the live application:
-  -✅Checkout input fields unresponsive to manual typing
-  -✅Remove button non-functional when clicked manually__ 
+  - *✅Checkout input fields unresponsive to manual typing
+  - *✅Remove button non-functional when clicked manually__ 
 ---
 
 ## 🚀 How to Run
