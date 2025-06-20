@@ -87,6 +87,21 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 
 - Additionally, I implemented robust error handling for all major test flows — including per-item screenshot capture in case of failure. This adds traceability and debugging ease to the test suite.
 ---
+### 📅 Day 8 - Automation Progress
+- Completed end-to-end checkout flow on SauceDemo using POM structure.
+- Included cart cancel, checkout cancel, final order confirmation, and go-to-cart revisit.
+- Added robust error handling, screenshots on failure, and assertions to verify dynamic user input.
+- Used pytest to execute and validate flows with clear test separation.
+
+- ___Backend (API Testing using requests + pytest):
+- Introduced API automation with reqres.in, focusing on:
+- POST login with various payloads and status expectations.
+- GET single user and all users, with param checks.
+- Used API key authentication via headers.
+- Validated response structures, like token, data, and error.
+- Wrote parameterized tests with meaningful assertions.
+
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -111,8 +126,21 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅ Improved exception handling in test class with per-case screenshots
 - ✅ Explored real-world bugs through manual (exploratory) testing
 - __✅ Reported actual bugs in the live application:
-  - *✅Checkout input fields unresponsive to manual typing
-  - *✅Remove button non-functional when clicked manually__ 
+  - ✅Checkout input fields unresponsive to manual typing
+  - ✅Remove button non-functional when clicked manually__
+- ✅Screenshots on failure with timestamps
+- ✅Assertions for field inputs and flows
+- ✅End-to-End UI flow: login ➝ cart ➝ checkout ➝ order confirm ➝ logout.
+- ✅POST, GET methods
+- ✅Status code assertions (200, 400, 404)
+- ✅API response validation (token, error, data)
+- ✅Header-based API Key usage(reqres.in)
+- ✅Parametrized payloads and response checks
+- ✅
+- ✅
+- ✅
+- ✅
+- ✅
 ---
 
 ## 🚀 How to Run
