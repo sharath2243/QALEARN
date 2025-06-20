@@ -9,6 +9,7 @@ import csv
 import pytest
 import os
 from datetime import datetime
+ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
 
 
 '''
@@ -88,8 +89,10 @@ def test_data(setup,test):
        
 
         product=Product_pom(driver) #created a class object
-        
-        product.poduct_title()
+        time.sleep(4)
+
+        product.poduct_title() #only for 1 i have checked.
+        print("[✅ PASS] Title check,description check!")
 
         try:
             for item in read_add_prod(): #day-7:iterating through csv read function
@@ -99,7 +102,6 @@ def test_data(setup,test):
             print("[✅ PASS] Product added successfuly!")
 
         except Exception as e:
-            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
             driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png") #day-8: introduced save screenshots if any error
             raise e
 
@@ -111,7 +113,6 @@ def test_data(setup,test):
             print("[✅ PASS] Products removed successfuly!")
 
         except Exception as e:
-            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
             driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png")
             raise e
 
@@ -122,8 +123,13 @@ def test_data(setup,test):
         
         try:
             product.go_to_cart()
+            time.sleep(3) #day-9: 3 seconds delay
+            product.go_back() #go back to shopping page
+            time.sleep(2) # wait for 2 seconds
+            product.go_to_cart() # go to cart again
+
+            print("[✅ PASS] GO-TO-CART checkup done!")
         except Exception as e:
-            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
             driver.save_screenshot(f"Screenshots/go_to_cart_f_{ts}.png") 
             raise e
 
@@ -132,18 +138,39 @@ def test_data(setup,test):
         time.sleep(4)
         
         try: #day-8: checkout process
-            checkout.checkout()
+            checkout.checkout() #checkout call
+            time.sleep(2)
+            checkout.go_to_home() #DAy-9: canels and goes to home
+            time.sleep(2)
+
+            product.add_product("add-to-cart-sauce-labs-onesie") # then adds another product
+
+            product.go_to_cart() #goes to cart
+            time.sleep(2)
+
+            checkout.checkout() #checksout
+            time.sleep(2)
+
         except Exception as e:
-            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
             driver.save_screenshot(f"Screenshots/checkout_f_{ts}.png")
             raise e
 
-        time.sleep(60)
+        time.sleep(4)
+
+        try: #day-9: summary check process
+            checkout.summary_check() #summary check call
+            time.sleep(10)
+        
+            print("[✅ PASS] CHECKOUT checkup done!")
+        except Exception as e:
+            driver.save_screenshot(f"Screenshots/summary_check_f_{ts}.png")
+            raise e
+
+        time.sleep(4)
 
         try:
             login.logout()
             print("[✅ PASS] logout successful!")
         except Exception as e:
-            ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
             driver.save_screenshot(f"Screenshots/logout_f_{ts}.png")
             raise e

@@ -12,6 +12,8 @@ class Checkout_pom: #day-8: checkout pom
         self.lname=(By.ID,"last-name")
         self.zip=(By.ID,"postal-code")
         self.cont=(By.ID,"continue")
+        self.finsih=(By.ID,"finish")
+        self.canc=(By.ID,"cancel")
     
     def checkout(self):
         try:
@@ -21,7 +23,21 @@ class Checkout_pom: #day-8: checkout pom
             self.driver.find_element(*self.zip).send_keys("560091")
 
             self.driver.find_element(*self.cont).click() #continue button 
+            
 
         except TimeoutException:
             return "something went wrong!!"
-
+        
+    def summary_check(self): #day-9: summary check and finish
+        try:
+            self.driver.find_element(*self.finsih).click() # finsish summary 
+            WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID,"back-to-products"))).click() #go back home
+             
+        except TimeoutException:
+            return "something went wrong!!"
+        
+    def go_to_home(self): #day-9: cancel on checkout-page and go back to shop
+        try:
+            self.driver.find_element(*self.canc).click()
+        except TimeoutException:
+            return "something went wrong!!"

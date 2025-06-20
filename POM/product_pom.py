@@ -9,6 +9,7 @@ class Product_pom:
     def __init__(self,driver):
         self.driver=driver
         self.cart_icon=(By.CLASS_NAME,"shopping_cart_link")
+        self.goback=(By.ID,"continue-shopping")
        #self.product_add_btn=(By.ID,"add-to-cart-sauce-labs-bike-light")
        #self.product_remove_btn=(By.ID,"remove-sauce-labs-bike-light")
     
@@ -34,6 +35,12 @@ class Product_pom:
     def go_to_cart(self): #day-6:go to cart
         try:
            WDW(self.driver,4).until(ec.element_to_be_clickable((self.cart_icon))).click()
+        except TimeoutException:
+            return "failed"
+
+    def go_back(self):
+        try:
+            WDW(self.driver,4).until(ec.element_to_be_clickable((self.goback))).click()
         except TimeoutException:
             return "failed"
     
