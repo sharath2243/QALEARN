@@ -87,7 +87,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 
 - Additionally, I implemented robust error handling for all major test flows — including per-item screenshot capture in case of failure. This adds traceability and debugging ease to the test suite.
 ---
-### 📅 Day 8 - Automation Progress
+### 📅 Day 9 - Automation Progress
 - Completed end-to-end checkout flow on SauceDemo using POM structure.
 - Included cart cancel, checkout cancel, final order confirmation, and go-to-cart revisit.
 - Added robust error handling, screenshots on failure, and assertions to verify dynamic user input.
@@ -101,6 +101,12 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Validated response structures, like token, data, and error.
 - Wrote parameterized tests with meaningful assertions.
 
+---
+###  📅 Day 10 - Automation Progress
+- POST /login: Tested valid, missing, and empty credentials
+- GET /users/{id}: Fetched user info; handled 200 & 404 cases
+- GET /users: Fetched all users and validated response
+- DELETE /users/{id}: Verified auth-based behavior (with/without API key)
 ---
 ## 🧠 Skills Covered So Far
 
@@ -136,7 +142,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅API response validation (token, error, data)
 - ✅Header-based API Key usage(reqres.in)
 - ✅Parametrized payloads and response checks
-- ✅
+- ✅Testing on POST,GET,DELETE methods with few altrations. 
 - ✅
 - ✅
 - ✅
