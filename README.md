@@ -147,7 +147,10 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 
 ```bash
 # Install dependencies
-pip install selenium pytest
+EXAMPLE: pip install selenium pytest
 
-# Run tests with output
-pytest -s -v test_login_pom.py
+# Run tests with output (for ui)
+pytest -s -v Tests/test_login_pom.py or pytest --html=report_frontend.html  Tests/test_login_pom.py::test_data[test0] #genrates html report
+
+#run tests with output (API)
+pytest -s -v Tests/test_backend.py
