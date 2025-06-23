@@ -1,7 +1,11 @@
 # Day-9: Intro to Backend API Testing
 import requests
 import pytest
+import os 
+import csv
+import json
 
+'''
 BASE_URL = "https://reqres.in/api" #url
 
 @pytest.mark.parametrize("payload,expected_status", [ #parameterized testing
@@ -86,3 +90,40 @@ def test_backend_delete(userid):
 
     assert res2.status_code==401 
     print(f"[❌ FAIL] USER DELETION FAILED as expected!")
+'''
+#day -11: data driven api testing
+
+BASE_URL="https://6859658d138a18086dfe49a9.mockapi.io/api" #created a mockapi for testing purpose 
+
+def read_api_data(): #function to accept the csv file 
+    fp=os.path.join(os.path.dirname(__file__),"..","Csv_files","api_data.csv")
+    with open (fp,newline='') as csvfile:
+        reader=list(csv.DictReader(csvfile))
+        return reader
+
+
+@pytest.mark.parametrize("data",read_api_data())
+def test_api(data):
+    headers={"content-type":"application/json"}
+    url=BASE_URL+data["endpoint"] # url for method
+    method=data["method"] #method
+    payload=json.loads(data["payload"]) if data["payload"] else {}  #payload with json.loads (to convert data in to string to dict)
+
+    if method=="GET" or method=="DELETE": 
+        try:
+            res= requests.get(url,headers=headers)
+            print(f"Response:{res.json()}")
+        except requests.exceptions.JSONDecodeError:
+            print(f"Exception caught:{res.text}")
+    elif method =="POST" or method=="PUT" or method=="PATCH":
+        try:
+            res= requests.post(url,json=payload,headers=headers)
+            print(f"Response:{res.json()}")
+        except requests.exceptions.JSONDecodeError:
+            print(f"Exception caught:{res.text}")
+    else:
+        pytest.skip(f"WRONG METHOD! {method}")
+    
+    assert res.status_code == int(data["expected_status"]), f"was expecting {data['expected_status']} but got {res.status_code}"
+
+

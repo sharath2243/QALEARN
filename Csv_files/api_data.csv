@@ -1,0 +1,9 @@
+method,endpoint,payload,expected_status
+GET,/users,,200
+GET,/users/2,,200
+GET,/user,,404
+GET,/users/50,,404
+POST,/users,"{""username"":""lord23"",""password"":""12345678""}",201
+DELETE,/users/27,,200
+DELETE,/user/,,404
+INVALID,/users/2,"{""username"":""lord23"",""password"":""12345678""}",201
