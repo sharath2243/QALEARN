@@ -108,6 +108,16 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - GET /users: Fetched all users and validated response
 - DELETE /users/{id}: Verified auth-based behavior (with/without API key)
 ---
+
+### 📅 Day 11 0 Summary
+- Created your own MockAPI project simulating a users and products resource. (It's free of cost for maximum 2 resource creation).
+- Designed and tested the following HTTP methods:
+    - Single product add to cart 
+    - GET /users – Retrieve all users.
+    - GET /users/:id – Retrieve a single user by ID.
+    - POST /users – Create a new user.
+    - DELETE /users/:id – Delete a specific user.
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -143,9 +153,9 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Header-based API Key usage(reqres.in)
 - ✅Parametrized payloads and response checks
 - ✅Testing on POST,GET,DELETE methods with few altrations. 
-- ✅
-- ✅
-- ✅
+- ✅Integration with MockAPI for backend simulation.
+- ✅Writing and managing test cases with varying: Endpoints, Methods (GET, POST, DELETE), Payloads (valid and invalid), Expected HTTP status codes (200, 400, 404).
+- ✅Learnt about json.loads() and also JSON decoding errors Handling. 
 - ✅
 ---
 
