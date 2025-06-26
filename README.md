@@ -117,7 +117,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
     - POST /users – Create a new user.
     - DELETE /users/:id – Delete a specific user.
 ---
-### 📅 Day 11 - Summary
+### 📅 Day 12 - Summary
 - Migrated API testing script for `reqres.in` to a separate module
 - Designed and tested a mock product API using CSV-driven testing
 - Verified all test cases manually in Postman before automating
