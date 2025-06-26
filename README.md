@@ -108,8 +108,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - GET /users: Fetched all users and validated response
 - DELETE /users/{id}: Verified auth-based behavior (with/without API key)
 ---
-
-### 📅 Day 11 0 Summary
+### 📅 Day 11 - Summary
 - Created your own MockAPI project simulating a users and products resource. (It's free of cost for maximum 2 resource creation).
 - Designed and tested the following HTTP methods:
     - Single product add to cart 
@@ -117,6 +116,13 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
     - GET /users/:id – Retrieve a single user by ID.
     - POST /users – Create a new user.
     - DELETE /users/:id – Delete a specific user.
+---
+### 📅 Day 11 - Summary
+- Migrated API testing script for `reqres.in` to a separate module
+- Designed and tested a mock product API using CSV-driven testing
+- Verified all test cases manually in Postman before automating
+- Created and structured CSV test data with the following methods:
+  - `GET`, `POST`, `PATCH`, `DELETE`, `HEAD`.
 ---
 ## 🧠 Skills Covered So Far
 
@@ -156,7 +162,9 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Integration with MockAPI for backend simulation.
 - ✅Writing and managing test cases with varying: Endpoints, Methods (GET, POST, DELETE), Payloads (valid and invalid), Expected HTTP status codes (200, 400, 404).
 - ✅Learnt about json.loads() and also JSON decoding errors Handling. 
-- ✅
+- ✅Manually verified all test cases in Postman before scripting.
+- ✅Handled edge cases (404s, invalid payloads)
+
 ---
 
 ## 🚀 How to Run
