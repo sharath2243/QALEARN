@@ -1,4 +1,4 @@
-
+'''
 # Day-1 : Strated learning completed searching "django" keyword in "python.org" website , used : By(Name) ,webdriver function, then get used to extract website name,find_element,assertion use etc,.
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -99,3 +99,4 @@ def test_py():
 
 def test_none():
     assert "Na" in "Naaani", "Fail"
+'''

@@ -13,46 +13,49 @@ def read_api_data(): #function to accept the csv file
     with open (fp,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile))
         return reader
+    
+@pytest.fixture(scope="session") #day-13: introduced pytest.fixture to maintain reusability of headers
+def def_headers():
+    return {"content-type":"application/json"}
 
 
 @pytest.mark.parametrize("data",read_api_data())
-def test_api(data):
-    headers={"content-type":"application/json"}
+def test_api(data,def_headers):
     url=BASE_URL+data["endpoint"] # url for method
     method=data["method"] #method
     payload=json.loads(data["payload"]) if data["payload"] else {}  #payload with json.loads (to convert data in to string to dict)
 
     if method=="GET": 
         try:
-            res= requests.get(url,headers=headers)
+            res= requests.get(url,headers=def_headers)
             print(f"✅ Response:{res.json()}")
         except requests.exceptions.JSONDecodeError:
             print(f"❌ Exception caught:{res.text}")
 
     elif method=="DELETE":
         try:
-            res=requests.delete(url,headers=headers)
+            res=requests.delete(url,headers=def_headers)
             print(f"✅ Response:{res.json()}")
         except requests.exceptions.JSONDecodeError:
             print(f"❌ Exception caught:{res.text}")
 
     elif method =="POST":
         try:
-            res= requests.post(url,json=payload,headers=headers)
+            res= requests.post(url,json=payload,headers=def_headers)
             print(f"✅ Response:{res.json()}")
         except requests.exceptions.JSONDecodeError:
             print(f"❌ Exception caught:{res.text}")
 
     elif method =="PATCH":
         try:
-            res= requests.patch(url,json=payload,headers=headers)
+            res= requests.patch(url,json=payload,headers=def_headers)
             print(f"✅ Response:{res.json()}")
         except requests.exceptions.JSONDecodeError:
             print(f"❌ Exception caught:{res.text}")
 
     elif method=="HEAD": #day-12: idempotent method check
         try:
-            res= requests.head(url,headers=headers)
+            res= requests.head(url,headers=def_headers)
             print("✅ NO RESPONSE REQUIRED!")
         except requests.exceptions.JSONDecodeError:
             print(f"❌ Exception caught:{res.text}")

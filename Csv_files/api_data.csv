@@ -1,11 +1,13 @@
 method,endpoint,payload,expected_status
+
 GET,/users,,200
 GET,/users/2,,200
 GET,/users/50,,404
 POST,/users,"{""username"":""ganesh_30"",""password"":""@*thetlk78""}",201
-POST,/user,"{""username"":""lord23"",""password"":""12345678""}",400
+POST,/users,"{""username"":""lord23"",""password"":""""}",400
 DELETE,/users/30,,200
 DELETE,/users/100,,404
+DELETE,/users,,400
 HEAD,/users,,200
 HEAD,/users/56,,404
 INVALID,/users/2,"{""username"":""lord23"",""password"":""12345678""}"
@@ -19,7 +21,9 @@ POST,/products/3,"{""name"":""bat"",""description"":""a cricket bat which is use
 POST,/products,"{""name"":""bat"",""description"":""a cricket bat which is used for batting"",""price"":""79.00"",""image"":""NONE""}",201
 DELETE,/products/32,,200
 DELETE,/products/369,,404
+DELETE,/products,,400
 HEAD,/products/19,,200
 HEAD,/products/79,,404
 PATCH,/products/3,"{""description"":""cheese is a by-product of milk""}",200
 PATCH,/products/69,"{""username"":""nandri_95""}",404
+DELETE,/users,,400
