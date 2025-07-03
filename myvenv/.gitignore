@@ -1,0 +1,19 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+myvenv/
+
+# Allure results
+allure-results/
+allure-report/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Others
+*.log
