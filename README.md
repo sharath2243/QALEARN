@@ -124,6 +124,16 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Created and structured CSV test data with the following methods:
   - `GET`, `POST`, `PATCH`, `DELETE`, `HEAD`.
 ---
+### 📅 Day 13 to day 16 - Summary
+- experimented button's behaviour on `demoqa.com`.
+- implemeted `@pytest.mark.smoke`, and it was unrecognisable then solved the issue by introduicng `pytest.ini`. (config file).
+- Implemented **flaky test handling** using `@pytest.mark.flaky`.
+- Resolved test instability caused by dynamic ads using:
+  - Custom wait strategies
+  - Retry logic via `pytest-rerunfailures`
+- Installed and configured **Allure Reporting**:
+  - Added Allure decorators:`@allure.title`, `@allure.severity`, `@allure.description`, etc,.
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -164,6 +174,12 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Learnt about json.loads() and also JSON decoding errors Handling. 
 - ✅Manually verified all test cases in Postman before scripting.
 - ✅Handled edge cases (404s, invalid payloads)
+- ✅`pytest.ini` markers, allure basics, allure report view using `alllure serve <filename>`.
+- ✅
+- ✅
+- ✅
+- ✅
+- ✅
 
 ---
 
@@ -178,3 +194,6 @@ pytest -s -v Tests/test_login_pom.py or pytest --html=report_frontend.html  Test
 
 #run tests with output (API)
 pytest -s -v Tests/test_backend.py
+
+#run all tests
+pytest -s -v Tests/
