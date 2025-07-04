@@ -4,7 +4,7 @@ import pytest
 import os 
 import csv
 import json
-
+import allure
 
 BASE_URL="https://6859658d138a18086dfe49a9.mockapi.io/api" #created a mockapi for testing purpose 
 
@@ -18,7 +18,9 @@ def read_api_data(): #function to accept the csv file
 def def_headers():
     return {"content-type":"application/json"}
 
-
+@allure.title("MOCKAPI.IO automation testing")
+@allure.description("Testing REST API on MOCKAPI.IO(designer- SHARATH R BHAT)")
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.parametrize("data",read_api_data())
 def test_api(data,def_headers):
     url=BASE_URL+data["endpoint"] # url for method

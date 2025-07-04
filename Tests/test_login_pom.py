@@ -10,7 +10,7 @@ import pytest
 import os
 from datetime import datetime
 ts=datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
-
+import allure
 
 '''
 def read_data(file_path):
@@ -43,7 +43,7 @@ for test in test_cases:
 '''
 
 #day-5: above same thing but with using pytest(without for loop and try catch finally)
-
+@pytest.mark.smoke
 @pytest.fixture #day-6: using pytest.fixture for recurring setup-teardown
 def setup():
     driver=webdriver.Chrome() #intialised webdriver here
@@ -67,8 +67,12 @@ def read_remove_prod(): #day-8:function to reading the remove product data
     with open(filepath,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile))
         return reader
-
+    
+@pytest.mark.smoke
 @pytest.mark.parametrize("test", read_login_data()) 
+@allure.title("Selenium automation on saucedemo.com")
+@allure.description("Tested By: Sharath R Bhat")
+@allure.severity(allure.severity_level.NORMAL)
 def test_data(setup,test):
 
     driver=setup #using pytest.fixture setup

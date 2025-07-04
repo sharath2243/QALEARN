@@ -1,0 +1,2 @@
+[✅ PASS] USER CREATED TEMPROARILY!| Response: {'name': 'eve.holt@reqres.in', 'id': '933', 'createdAt': '2025-07-04T04:44:12.764Z'}
+[❌ FAIL] USER CREATION FAILED as expected!| Response: {'error': 'Missing API key.', 'how_to_get_one': 'https://reqres.in/signup'}

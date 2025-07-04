@@ -1,0 +1,2 @@
+[✅ PASS] USER CREATED TEMPROARILY!| Response: {'email': 'lord23@gmail.com', 'password': 'abracadabra', 'id': '563', 'createdAt': '2025-07-04T04:50:00.872Z'}
+[❌ FAIL] USER CREATION FAILED as expected!| Response: {'error': 'Missing API key.', 'how_to_get_one': 'https://reqres.in/signup'}

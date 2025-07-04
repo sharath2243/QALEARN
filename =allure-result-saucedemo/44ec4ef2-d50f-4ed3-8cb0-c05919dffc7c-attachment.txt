@@ -1,0 +1,1 @@
+[❌ FAIL as expected] Error message: error: Epic sadface: Sorry, this user has been locked out.

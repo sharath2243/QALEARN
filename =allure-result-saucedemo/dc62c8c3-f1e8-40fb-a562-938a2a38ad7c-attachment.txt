@@ -1,0 +1,7 @@
+[✅ PASS] Login successful!
+[✅ PASS] Title check,description check!
+[✅ PASS] Product added successfuly!
+[✅ PASS] Products removed successfuly!
+[✅ PASS] GO-TO-CART checkup done!
+[✅ PASS] CHECKOUT checkup done!
+[✅ PASS] logout successful!

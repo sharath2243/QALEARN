@@ -1,0 +1,1 @@
+✅ Response:{'name': 'Keyboard', 'description': 'Our rabbit-friendly Table ensures trim comfort for your pets', 'price': '372.25', 'image': 'https://picsum.photos/seed/Fnp9pIop/1300/1953', 'id': '10'}

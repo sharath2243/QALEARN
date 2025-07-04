@@ -1,15 +1,19 @@
 # Day-9: Intro to Backend API Testing
 import requests
 import pytest
-
+import allure 
 BASE_URL = "https://reqres.in/api" #url
 
+@allure.title("Reqres.in automation testing")
+@allure.description("Testing LOGIN on reqres.in")
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.parametrize("payload,expected_status", [ #parameterized testing
     ({"email": "eve.holt@reqres.in", "password": "cityslicka"}, 200),
     ({"email": "eve.holt@reqres.in"}, 400),
     ({}, 400),
 ])
 
+@pytest.mark.smoke
 def test_backend_post(payload, expected_status): #function to login (post method)
     headers = {"x-api-key": "reqres-free-v1"}  # free-api-key
 
@@ -26,7 +30,10 @@ def test_backend_post(payload, expected_status): #function to login (post method
     else:
         pytest.fail(f"Unexpected status code: {res.status_code}")
 
+@allure.title("Reqres.in automation testing")
+@allure.description("Testing GET_SINGLE on reqres.in")
 @pytest.mark.parametrize("userid,status",[(2,200),(999,404)])
+@pytest.mark.smoke
 def test_backend_get_one(userid,status): #function to get a user by his id (GET)
 
     headers={"x-api-key": "reqres-free-v1"}
@@ -44,8 +51,10 @@ def test_backend_get_one(userid,status): #function to get a user by his id (GET)
     else:
         pytest.fail(f"Unexpected status code: {res.status_code}")
 
-
+@allure.title("Reqres.in automation testing")
+@allure.description("Testing GET ALL USERS on reqres.in")
 @pytest.mark.parametrize("status",[200,400,401,404]) #function to get all users 
+@pytest.mark.smoke
 def test_backend_get_all(status):
     headers={"x-api-key": "reqres-free-v1"}
 
@@ -59,9 +68,12 @@ def test_backend_get_all(status):
         assert {}== res2.json()or "error" in res2.json(), "Error message missing!"
         print(f"[❌ FAIL] USER DETAILS NOT FOUND as expected!| Response: {res2.json()}")
 
+@allure.title("Reqres.in automation testing")
+@allure.description("Testing POST on reqres.in")
 @pytest.mark.parametrize("payload",[({"email": "lord23@gmail.com", "password": "abracadabra"}),
     ({"name": "eve.holt@reqres.in"}),
     ({})])
+@pytest.mark.smoke
 def test_backend_create_one(payload): #Day-10: create a user temproarily
     headers={"x-api-key": "reqres-free-v1"}
 
@@ -74,7 +86,10 @@ def test_backend_create_one(payload): #Day-10: create a user temproarily
     assert res2.status_code==401 
     print(f"[❌ FAIL] USER CREATION FAILED as expected!| Response: {res2.json()}")
 
+@allure.title("Reqres.in automation testing")
+@allure.description("Testing DELETE on reqres.in")
 @pytest.mark.parametrize("userid",[2,300,400,878]) # delete a user temproarily
+@pytest.mark.smoke
 def test_backend_delete(userid):
     headers={"x-api-key": "reqres-free-v1"}
 

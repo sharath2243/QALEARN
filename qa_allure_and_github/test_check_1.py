@@ -4,12 +4,14 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait as WDW
 import pytest
 import time 
+from datetime import datetime
 import allure #allure imported 
+ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 
 
 @pytest.fixture
 @allure.title("Learning experiment on demoqa.com")
-@allure.description("This test tests flaky test check,smoke testing, clicking of the described button below! ")
+@allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
 @allure.severity(allure.severity_level.NORMAL)
 def setup():
     driver=webdriver.Chrome()
@@ -25,15 +27,13 @@ def test_crawl(setup): #function inherits something from setup function above
 
     try:
         WDW(driver,10).until(ec.element_to_be_clickable((By.ID,"showLargeModal"))).click()
-    except Exception as e:
-        print("exception caught!!:",e)
-        assert False,"something went wrong!"
-    time.sleep(10)
-
-    try:
+        time.sleep(10)
         WDW(driver,5).until(ec.element_to_be_clickable((By.ID,"closeLargeModal"))).click()
     except Exception as e:
         print("exception caught!!:",e)
+        filename=f"failure_screenshot_{ts}.png"
+        driver.save_screenshot(filename)
+        allure.attach.file(filename,name='Screenshots',attachment_type=allure.attachment_type.PNG)
         assert False,"something went wrong!"
     time.sleep(2)
 '''
