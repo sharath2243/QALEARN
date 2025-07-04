@@ -125,7 +125,7 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
   - `GET`, `POST`, `PATCH`, `DELETE`, `HEAD`.
 ---
 ### 📅 Day 13 to day 16 - Summary
-- experimented button's behaviour on `demoqa.com`.
+- Experimented button's behaviour on `demoqa.com`.
 - implemeted `@pytest.mark.smoke`, and it was unrecognisable then solved the issue by introduicng `pytest.ini`. (config file).
 - Implemented **flaky test handling** using `@pytest.mark.flaky`.
 - Resolved test instability caused by dynamic ads using:
@@ -133,6 +133,13 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
   - Retry logic via `pytest-rerunfailures`
 - Installed and configured **Allure Reporting**:
   - Added Allure decorators:`@allure.title`, `@allure.severity`, `@allure.description`, etc,.
+---
+### 📅 Day 17 - Summary
+- Implemeted **Allure reporting** on other test cases.
+- Wrote root `pytest.ini` config.
+- Generated `allure serve <filename>` reports.
+- Had a look on what i wrote from the beginning.
+
 ---
 ## 🧠 Skills Covered So Far
 
