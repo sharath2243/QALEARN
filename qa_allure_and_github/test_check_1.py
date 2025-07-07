@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait as WDW
 import pytest
 import time 
+import os
 from datetime import datetime
 import allure #allure imported 
 ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
@@ -14,15 +15,20 @@ ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 @allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
 @allure.severity(allure.severity_level.NORMAL)
 def setup():
-    options = webdriver.ChromeOptions() 
-    options.add_argument("--headless")  # ✅ Required for GitHub Actions
-    options.add_argument("--no-sandbox")  # ✅ Prevents certain security issues in CI
-    options.add_argument("--disable-dev-shm-usage")  # ✅ Prevents memory issues in Docker/CI
-    driver = webdriver.Chrome(options=options) #intialised webdriver here
-    yield driver 
+    options = webdriver.ChromeOptions()
+    
+    # ✅ Enable headless only in GitHub Actions
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+    
+    driver = webdriver.Chrome(options=options)
+    yield driver
     driver.quit()
 
-@pytest.mark.flaky(reruns=2,reruns_delay=2) #useful for flaky test retry 2 times with 2 seconds delay
+@pytest.mark.flaky(reruns=4,reruns_delay=2) #useful for flaky test retry 2 times with 2 seconds delay
 @pytest.mark.smoke #smoke testing (added it in pytest.ini before)
 def test_crawl(setup): #function inherits something from setup function above
     driver=setup

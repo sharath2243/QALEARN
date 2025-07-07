@@ -31,6 +31,7 @@ class Checkout_pom: #day-8: checkout pom
     def summary_check(self): #day-9: summary check and finish
         try:
             self.driver.find_element(*self.finsih).click() # finsish summary 
+            time.sleep(4)
             WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID,"back-to-products"))).click() #go back home
              
         except TimeoutException:

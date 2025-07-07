@@ -43,16 +43,21 @@ for test in test_cases:
 '''
 
 #day-5: above same thing but with using pytest(without for loop and try catch finally)
+
 @pytest.fixture #day-6: using pytest.fixture for recurring setup-teardown
 def setup():
-    options = webdriver.ChromeOptions() 
-    options.add_argument("--headless")  # ✅ Required for GitHub Actions
-    options.add_argument("--no-sandbox")  # ✅ Prevents certain security issues in CI
-    options.add_argument("--disable-dev-shm-usage")  # ✅ Prevents memory issues in Docker/CI
-
-    driver = webdriver.Chrome(options=options) #intialised webdriver here
-    yield driver # to perform cleanup after tests are run (setup-teardown)
-    driver.quit() #quit 
+    options = webdriver.ChromeOptions()
+    
+    # ✅ Enable headless only in GitHub Actions
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+    
+    driver = webdriver.Chrome(options=options)
+    yield driver
+    driver.quit()
 
 def read_login_data(): # function for reading the login data
     filepath = os.path.join(os.path.dirname(__file__),"..","Csv_files","login_details.csv")
@@ -167,7 +172,6 @@ def test_data(setup,test):
 
         try: #day-9: summary check process
             checkout.summary_check() #summary check call
-            time.sleep(10)
         
             print("[✅ PASS] CHECKOUT checkup done!")
         except Exception as e:
