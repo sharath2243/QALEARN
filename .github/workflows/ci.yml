@@ -1,0 +1,42 @@
+name: QALEARN Tests
+
+on : [push,pull_request]
+
+jobs:
+    run-tests:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name : Read repo
+          uses: actions/checkout@v3 
+
+        - name : Setup Py
+          uses : actions/setup-python@v4
+          with :
+            python-version: '3.11'
+
+        - name : Install required dependencies
+          run : |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt 
+        
+        - name : Run tests and store allure report (For Tests/ folder)
+          run : pytest Tests/ --alluredir=allure-tests-results
+        
+        - name : Run tests and store allure reports (For qa_allure_and_github)
+          run : pytest qa_allure_and_github/ --alluredir=allure-qa-results
+        
+        - name : upload allure Results (Tests/ folder)
+          uses : actions/upload-artifact@v3
+          with:
+                name: allure-tests-results
+                path: allure-tests-results/
+        
+        - name : upload allure Results (qa_allure_and_github/ folder)
+          uses : actions/upload-artifact@v3
+          with:
+                name: allure-qa-results
+                path: allure-qa-results/
+        
+        
+        
