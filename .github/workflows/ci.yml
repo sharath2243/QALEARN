@@ -8,7 +8,7 @@ jobs:
 
         steps:
         - name : Read repo
-          uses: actions/checkout@v3 
+          uses: actions/checkout@v4
 
         - name : Setup Py
           uses : actions/setup-python@v4
@@ -27,13 +27,13 @@ jobs:
           run : pytest qa_allure_and_github/ --alluredir=allure-qa-results
         
         - name : upload allure Results (Tests/ folder)
-          uses : actions/upload-artifact@v3
+          uses : actions/upload-artifact@v4
           with:
                 name: allure-tests-results
                 path: allure-tests-results/
         
         - name : upload allure Results (qa_allure_and_github/ folder)
-          uses : actions/upload-artifact@v3
+          uses : actions/upload-artifact@v4
           with:
                 name: allure-qa-results
                 path: allure-qa-results/
