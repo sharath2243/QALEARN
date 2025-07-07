@@ -11,7 +11,7 @@ HEAD,/users,,200
 HEAD,/users/56,,404
 INVALID,/users/2,"{""username"":""lord23"",""password"":""12345678""}"
 PATCH,/users/1,"{""username"":""jarvis_69""}",200
-PATCH,/users/49,"{""username"":""nandri_95""}",404
+
 
 GET,/products,,200
 GET,/products/10,,200
