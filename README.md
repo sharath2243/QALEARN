@@ -141,6 +141,18 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - Had a look on what i wrote from the beginning.
 
 ---
+### 📅 Day 18 - Summary
+- Created .github/workflows/qa_tests.yml
+- Setup CI to:
+    - Checkout the repo
+    - Install Python 3.11 and dependencies
+- Run pytest for:
+  - Tests/ folder
+  - qa_allure_and_github/ folder
+- Generate Allure result folders (--alluredir=...)
+- Upload test artifacts using actions/upload-artifact@v4.
+
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -182,8 +194,8 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Manually verified all test cases in Postman before scripting.
 - ✅Handled edge cases (404s, invalid payloads)
 - ✅`pytest.ini` markers, allure basics, allure report view using `alllure serve <filename>`.
-- ✅
-- ✅
+- ✅ Learnt about github actions and implemeted it.
+- ✅ 
 - ✅
 - ✅
 - ✅
