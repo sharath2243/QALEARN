@@ -43,10 +43,14 @@ for test in test_cases:
 '''
 
 #day-5: above same thing but with using pytest(without for loop and try catch finally)
-@pytest.mark.smoke
 @pytest.fixture #day-6: using pytest.fixture for recurring setup-teardown
 def setup():
-    driver=webdriver.Chrome() #intialised webdriver here
+    options = webdriver.ChromeOptions() 
+    options.add_argument("--headless")  # ✅ Required for GitHub Actions
+    options.add_argument("--no-sandbox")  # ✅ Prevents certain security issues in CI
+    options.add_argument("--disable-dev-shm-usage")  # ✅ Prevents memory issues in Docker/CI
+
+    driver = webdriver.Chrome(options=options) #intialised webdriver here
     yield driver # to perform cleanup after tests are run (setup-teardown)
     driver.quit() #quit 
 

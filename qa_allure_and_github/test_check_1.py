@@ -14,7 +14,11 @@ ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 @allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
 @allure.severity(allure.severity_level.NORMAL)
 def setup():
-    driver=webdriver.Chrome()
+    options = webdriver.ChromeOptions() 
+    options.add_argument("--headless")  # ✅ Required for GitHub Actions
+    options.add_argument("--no-sandbox")  # ✅ Prevents certain security issues in CI
+    options.add_argument("--disable-dev-shm-usage")  # ✅ Prevents memory issues in Docker/CI
+    driver = webdriver.Chrome(options=options) #intialised webdriver here
     yield driver 
     driver.quit()
 
