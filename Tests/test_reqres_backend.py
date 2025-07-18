@@ -34,6 +34,7 @@ def test_backend_post(payload, expected_status): #function to login (post method
 @allure.description("Testing GET_SINGLE on reqres.in")
 @pytest.mark.parametrize("userid,status",[(2,200),(999,404)])
 @pytest.mark.smoke
+@pytest.mark.regression
 def test_backend_get_one(userid,status): #function to get a user by his id (GET)
 
     headers={"x-api-key": "reqres-free-v1"}
@@ -55,6 +56,7 @@ def test_backend_get_one(userid,status): #function to get a user by his id (GET)
 @allure.description("Testing GET ALL USERS on reqres.in")
 @pytest.mark.parametrize("status",[200,400,401,404]) #function to get all users 
 @pytest.mark.smoke
+@pytest.mark.regression
 def test_backend_get_all(status):
     headers={"x-api-key": "reqres-free-v1"}
 

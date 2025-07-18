@@ -30,6 +30,7 @@ def setup():
 
 @pytest.mark.flaky(reruns=4,reruns_delay=2) #useful for flaky test retry 2 times with 2 seconds delay
 @pytest.mark.smoke #smoke testing (added it in pytest.ini before)
+@pytest.mark.regression
 def test_crawl(setup): #function inherits something from setup function above
     driver=setup
     driver.get("https://demoqa.com/modal-dialogs")

@@ -2,28 +2,28 @@ method,endpoint,payload,expected_status
 
 GET,/users,,200
 GET,/users/2,,200
-GET,/users/50,,404
+GET,/users/150,,404
 POST,/users,"{""username"":""ganesh_30"",""password"":""@*thetlk78""}",201
 POST,/users,"{""username"":""lord23"",""password"":""""}",201
-DELETE,/users/51,,200
+DELETE,/users/21,,200
 DELETE,/users/100,,404
 DELETE,/users,,400
 HEAD,/users,,200
-HEAD,/users/56,,404
+HEAD,/users/157,,404
 INVALID,/users/2,"{""username"":""lord23"",""password"":""12345678""}"
 PATCH,/users/1,"{""username"":""jarvis_69""}",200
-PATCH,/users/49,"{""username"":""nandri_95""}",404
+PATCH,/users/68,"{""username"":""nandri_95""}",404
 
 GET,/products,,200
 GET,/products/10,,200
-GET,/products/69,,404
+GET,/products/99,,404
 POST,/products/3,"{""name"":""bat"",""description"":""a cricket bat which is used for batting"",""price"":""79.00"",""image"":""NONE""}",400
 POST,/products,"{""name"":""bat"",""description"":""a cricket bat which is used for batting"",""price"":""79.00"",""image"":""NONE""}",201
-DELETE,/products/40,,200
+DELETE,/products/21,,200
 DELETE,/products/369,,404
 DELETE,/products,,400
 HEAD,/products/19,,200
 HEAD,/products/79,,404
 PATCH,/products/3,"{""description"":""cheese is a by-product of milk""}",200
-PATCH,/products/69,"{""username"":""nandri_95""}",404
+PATCH,/products/78,"{""username"":""nandri_95""}",404
 DELETE,/users,,400

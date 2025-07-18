@@ -78,6 +78,7 @@ def read_remove_prod(): #day-8:function to reading the remove product data
         return reader
     
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.parametrize("test", read_login_data()) 
 @allure.title("Selenium automation on saucedemo.com")
 @allure.description("Tested By: Sharath R Bhat")
