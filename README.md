@@ -1,6 +1,6 @@
 # 🧪 My Selenium + Python Automation Learning Journey
 
-Welcome to my hands-on automation journey! This repository showcases my daily learning progress with **Selenium WebDriver using Python**, including writing automated test scripts, managing test data, and using testing frameworks like **Pytest**.
+This repository documents my hands-on journey in automation testing using Selenium WebDriver with Python. It includes real-world test cases, Pytest-based test execution, Allure reports, GitHub Actions CI/CD, and test data management using CSV. Each module reflects my consistent practice and deepening understanding of end-to-end QA workflows.
 
 ---
 
@@ -195,11 +195,6 @@ Welcome to my hands-on automation journey! This repository showcases my daily le
 - ✅Handled edge cases (404s, invalid payloads)
 - ✅`pytest.ini` markers, allure basics, allure report view using `alllure serve <filename>`.
 - ✅ Learnt about github actions and implemeted it.
-- ✅ 
-- ✅
-- ✅
-- ✅
-
 ---
 
 ## 🚀 How to Run
