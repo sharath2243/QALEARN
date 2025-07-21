@@ -21,10 +21,10 @@ jobs:
                 pip install -r requirements.txt 
         
         - name : Run tests and store allure report (For Tests/ folder)
-          run : pytest Tests/ --alluredir=allure-tests-results
+          run : pytest -m "smoke or regression" Tests/ --alluredir=allure-tests-results
         
         - name : Run tests and store allure reports (For qa_allure_and_github)
-          run : pytest qa_allure_and_github/ --alluredir=allure-qa-results
+          run : pytest -m "smoke or regression" qa_allure_and_github/ --alluredir=allure-qa-results
         
         - name : upload allure Results (Tests/ folder)
           uses : actions/upload-artifact@v4

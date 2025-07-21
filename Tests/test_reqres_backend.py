@@ -14,6 +14,7 @@ BASE_URL = "https://reqres.in/api" #url
 ])
 
 @pytest.mark.smoke
+@allure.step("Trying login..")
 def test_backend_post(payload, expected_status): #function to login (post method)
     headers = {"x-api-key": "reqres-free-v1"}  # free-api-key
 
@@ -35,6 +36,7 @@ def test_backend_post(payload, expected_status): #function to login (post method
 @pytest.mark.parametrize("userid,status",[(2,200),(999,404)])
 @pytest.mark.smoke
 @pytest.mark.regression
+@allure.step("Reading single user data..")
 def test_backend_get_one(userid,status): #function to get a user by his id (GET)
 
     headers={"x-api-key": "reqres-free-v1"}
@@ -57,6 +59,7 @@ def test_backend_get_one(userid,status): #function to get a user by his id (GET)
 @pytest.mark.parametrize("status",[200,400,401,404]) #function to get all users 
 @pytest.mark.smoke
 @pytest.mark.regression
+@allure.step("Getting all user data..")
 def test_backend_get_all(status):
     headers={"x-api-key": "reqres-free-v1"}
 
@@ -76,6 +79,7 @@ def test_backend_get_all(status):
     ({"name": "eve.holt@reqres.in"}),
     ({})])
 @pytest.mark.smoke
+@allure.step("User creation..")
 def test_backend_create_one(payload): #Day-10: create a user temproarily
     headers={"x-api-key": "reqres-free-v1"}
 
@@ -92,6 +96,7 @@ def test_backend_create_one(payload): #Day-10: create a user temproarily
 @allure.description("Testing DELETE on reqres.in")
 @pytest.mark.parametrize("userid",[2,300,400,878]) # delete a user temproarily
 @pytest.mark.smoke
+@allure.step("User deletion..")
 def test_backend_delete(userid):
     headers={"x-api-key": "reqres-free-v1"}
 

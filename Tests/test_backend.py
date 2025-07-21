@@ -8,6 +8,7 @@ import allure
 
 BASE_URL="https://6859658d138a18086dfe49a9.mockapi.io/api" #created a mockapi for testing purpose 
 
+@allure.step("Reading api data from csv")
 def read_api_data(): #function to accept the csv file 
     fp=os.path.join(os.path.dirname(__file__),"..","Csv_files","api_data.csv")
     with open (fp,newline='') as csvfile:

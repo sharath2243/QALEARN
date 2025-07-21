@@ -11,9 +11,6 @@ ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 
 
 @pytest.fixture
-@allure.title("Learning experiment on demoqa.com")
-@allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
-@allure.severity(allure.severity_level.NORMAL)
 def setup():
     options = webdriver.ChromeOptions()
     
@@ -31,11 +28,14 @@ def setup():
 @pytest.mark.flaky(reruns=4,reruns_delay=2) #useful for flaky test retry 2 times with 2 seconds delay
 @pytest.mark.smoke #smoke testing (added it in pytest.ini before)
 @pytest.mark.regression
+@allure.title("Learning experiment on demoqa.com")
+@allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
+@allure.severity(allure.severity_level.NORMAL)
 def test_crawl(setup): #function inherits something from setup function above
     driver=setup
     driver.get("https://demoqa.com/modal-dialogs")
 
-
+    
     try:
         WDW(driver,10).until(ec.element_to_be_clickable((By.ID,"showLargeModal"))).click()
         time.sleep(10)

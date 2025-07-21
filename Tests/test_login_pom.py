@@ -58,19 +58,22 @@ def setup():
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
-
+    
+@allure.step("reading login data..")
 def read_login_data(): # function for reading the login data
     filepath = os.path.join(os.path.dirname(__file__),"..","Csv_files","login_details.csv")
     with open(filepath,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile)) # reading data from csv
         return reader 
     
+@allure.step("adding products..") 
 def read_add_prod(): #day-7:function to reading the add product data
     filepath=os.path.join(os.path.dirname(__file__),"..","Csv_files","add_product.csv")
     with open(filepath,newline='') as csvfile:
         reader=list(csv.DictReader(csvfile))
         return reader
-
+    
+@allure.step("removing product..")
 def read_remove_prod(): #day-8:function to reading the remove product data
     filepath=os.path.join(os.path.dirname(__file__),"..","Csv_files","remove_product.csv")
     with open(filepath,newline='') as csvfile:
