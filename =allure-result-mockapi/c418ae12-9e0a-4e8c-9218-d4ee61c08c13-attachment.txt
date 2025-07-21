@@ -1,0 +1,1 @@
+✅ Response:{'name': 'Mouse', 'description': 'cheese is a by-product of milk', 'price': '927.29', 'image': 'https://loremflickr.com/2055/850?lock=8521289103388537', 'id': '3'}

@@ -1,0 +1,1 @@
+✅ Response:{'name': 'Ball', 'description': 'Discover the regular new Ball with an exciting mix of Rubber ingredients', 'price': '74.59', 'image': 'https://picsum.photos/seed/RWiOStAIJ2/1178/1757', 'id': '10'}

@@ -23,6 +23,7 @@ def def_headers():
 @allure.description("Testing REST API on MOCKAPI.IO(designer- SHARATH R BHAT)")
 @allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.parametrize("data",read_api_data())
+@pytest.mark.smoke
 def test_api(data,def_headers):
     url=BASE_URL+data["endpoint"] # url for method
     method=data["method"] #method

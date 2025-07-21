@@ -7,9 +7,6 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        - name: Cleanup pytest cache
-          run: rm -rf .pytest_cache
-          
         - name : Read repo
           uses: actions/checkout@v4
 
@@ -22,23 +19,23 @@ jobs:
           run : |
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt 
-
+        
         - name : Run tests and store allure report (For Tests/ folder)
-          run : pytest -m "smoke or regression" -v Tests/ --alluredir=allure-tests-results
+          run : pytest -m "smoke or regression"  Tests/ --alluredir=allure-tests-results
         
         - name : Run tests and store allure reports (For qa_allure_and_github)
-          run : pytest -m "smoke or regression" -v qa_allure_and_github/ --alluredir=allure-qa-results
+          run : pytest -m "smoke or regression" qa_allure_and_github/ --alluredir=allure-qa-results
         
         - name : upload allure Results (Tests/ folder)
           uses : actions/upload-artifact@v4
           with:
-                name: allure-tests-results
+                name: allure-tests-results_1
                 path: allure-tests-results/
         
         - name : upload allure Results (qa_allure_and_github/ folder)
           uses : actions/upload-artifact@v4
           with:
-                name: allure-qa-results
+                name: allure-qa-results_1
                 path: allure-qa-results/
         
         

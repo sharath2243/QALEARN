@@ -1,0 +1,1 @@
+✅ Response:{'name': 'Tuna', 'description': 'Discover the taut new Mouse with an exciting mix of Metal ingredients', 'price': '303.59', 'image': 'https://picsum.photos/seed/yxAMQ/391/2664', 'id': '20'}

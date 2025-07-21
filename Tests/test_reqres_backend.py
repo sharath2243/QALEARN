@@ -94,7 +94,7 @@ def test_backend_create_one(payload): #Day-10: create a user temproarily
 
 @allure.title("Reqres.in automation testing")
 @allure.description("Testing DELETE on reqres.in")
-@allure.step("User creation..")
+@allure.step("User deletion..")
 @pytest.mark.parametrize("userid",[2,300,400,878]) # delete a user temproarily
 @pytest.mark.smoke
 def test_backend_delete(userid):

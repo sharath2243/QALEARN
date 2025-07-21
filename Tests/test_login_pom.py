@@ -58,7 +58,7 @@ def setup():
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
-    
+
 @allure.step("reading login data..")
 def read_login_data(): # function for reading the login data
     filepath = os.path.join(os.path.dirname(__file__),"..","Csv_files","login_details.csv")
