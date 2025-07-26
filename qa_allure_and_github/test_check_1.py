@@ -34,7 +34,14 @@ def setup():
 def test_crawl(setup): #function inherits something from setup function above
     driver=setup
     driver.get("https://demoqa.com/modal-dialogs")
-
+     
+    #ad block logic (chatgpt gave me i wrote!)
+    driver.execute_script("""
+        let ads=document.querySelectorAll("iframe,.adsbygoogle,.ads");
+        ads.forEach(ad=>ad.style.display="none");
+        console.log("ads hidden");
+    """)
+    print("Ads skipped!✅")
     
     try:
         WDW(driver,10).until(ec.element_to_be_clickable((By.ID,"showLargeModal"))).click()

@@ -1,5 +1,6 @@
 # Day-9: Intro to Backend API Testing
 import requests
+import responses
 import pytest
 import allure 
 BASE_URL = "https://reqres.in/api" #url
@@ -15,10 +16,26 @@ BASE_URL = "https://reqres.in/api" #url
 
 @allure.step("Trying login..")
 @pytest.mark.smoke
+@responses.activate() #wrote mock reposnes so we can mock backend!
 def test_backend_post(payload, expected_status): #function to login (post method)
+    if expected_status==200:
+        responses.add(
+            responses.POST,
+            f"{BASE_URL}/login",
+            json={"token":"mock123"},
+            status=200
+        )
+    else:
+        responses.add(
+            responses.POST,
+            f"{BASE_URL}/login",
+            json={"error":"missing cred! or something went wrong!"},
+            status=expected_status
+        )
+
     headers = {"x-api-key": "reqres-free-v1"}  # free-api-key
 
-    res = requests.post(f"{BASE_URL}/login", json=payload, headers=headers) #post -request
+    res = requests.post(f"{BASE_URL}/login", json=payload) #post -request
 
     assert res.status_code == expected_status, f"Expected {expected_status}, got {res.status_code}" #assertion for sataus-code
 
@@ -48,7 +65,7 @@ def test_backend_get_one(userid,status): #function to get a user by his id (GET)
     if res.status_code == 200:
         assert "data" in res.json(), "DATA missing!"
         print(f"[✅ PASS] USER FETCHED!| Response: {res.json()}")
-    elif res2.status_code in (400, 401,404):
+    elif res2.status_code in (400, 401, 404):
         assert {}== res2.json()or "error" in res2.json(), "Error message missing!"
         print(f"[❌ FAIL] USER DETAILS NOT FOUND as expected!| Response: {res2.json()}")
     else:
@@ -108,3 +125,4 @@ def test_backend_delete(userid):
 
     assert res2.status_code==401 
     print(f"[❌ FAIL] USER DELETION FAILED as expected!")
+

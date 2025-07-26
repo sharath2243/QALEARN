@@ -1,3 +1,6 @@
+#ignored file
+smart_cctv.txt
+
 # Byte-compiled / cache files
 __pycache__/
 *.py[cod]
