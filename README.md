@@ -1,6 +1,6 @@
-# 🧪 My Selenium + Python Automation Learning Journey
+# 🧪 Test Automation Framework Summary
 
-This repository documents my hands-on journey in automation testing using Selenium WebDriver with Python. It includes real-world test cases, Pytest-based test execution, Allure reports, GitHub Actions CI/CD, and test data management using CSV. Each module reflects my consistent practice and deepening understanding of end-to-end QA workflows.
+This is a Python-based automation framework using Selenium WebDriver for browser testing and Pytest for running test cases. It follows the Page Object Model (POM) design and supports data-driven testing using CSV files. I’ve added Allure for better reporting and connected the project to GitHub Actions for automatic test runs. The framework also covers API testing using requests and responses, handles real-time UI bugs, takes screenshots on failure, and retries flaky tests when needed.
 
 ---
 
@@ -195,6 +195,9 @@ This repository documents my hands-on journey in automation testing using Seleni
 - ✅Handled edge cases (404s, invalid payloads)
 - ✅`pytest.ini` markers, allure basics, allure report view using `alllure serve <filename>`.
 - ✅ Learnt about github actions and implemeted it.
+- ✅ Learnt about responses(The responses library is a mock server specifically designed for mocking out requests in Python.)
+- ✅ Explored prompts,alerts,dropdwon, select options dropdown, file input handling through selenium.
+- ✅ mocked ad-skipping using driver.excute_script.
 ---
 
 ## 🚀 How to Run
