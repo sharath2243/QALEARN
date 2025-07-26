@@ -126,7 +126,7 @@ def setup():
 @pytest.mark.regression
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
 @allure.title("Random curiosity tries")
-@allure.description("tested by- sharath Bhat")
+@allure.description("tested by- sharath Bhat for dropdown")
 @allure.step("dropdown check!")
 def test_sel(setup):
     driver=setup
@@ -190,7 +190,7 @@ def setup2():
 @pytest.mark.smoke
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
 @allure.title("Random curiosity tries")
-@allure.description("tested by- sharath Bhat")
+@allure.description("tested by- sharath Bhat for alerts,prompts,confirmation message")
 @allure.step("alert,prompt checks!")
 def test_func(setup2):
     driver=setup2
@@ -258,7 +258,7 @@ def setup3():
 @pytest.mark.smoke
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
 @allure.title("Random curiosity tries")
-@allure.description("tested by- sharath Bhat")
+@allure.description("tested by- sharath Bhat for file input")
 @allure.step("file input try!")
 def test_drop(setup3):
     driver=setup3
