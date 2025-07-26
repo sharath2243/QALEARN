@@ -1,6 +1,6 @@
 # 🧪 Test Automation Framework Summary
 
-This is a Python-based automation framework using Selenium WebDriver for browser testing and Pytest for running test cases. It follows the Page Object Model (POM) design and supports data-driven testing using CSV files. I’ve added Allure for better reporting and connected the project to GitHub Actions for automatic test runs. The framework also covers API testing using requests and responses, handles real-time UI bugs, takes screenshots on failure, and retries flaky tests when needed.
+This is a Python-based automation framework using Selenium WebDriver for browser testing and Pytest for running test cases. It follows the Page Object Model (POM) design and supports data-driven testing using CSV files. I’ve added Allure for better reporting and connected the project to GitHub Actions for automatic test runs. The framework also covers API testing using requests and responses, handles real-time UI bugs, takes screenshots on failure, and retries flaky tests when needed.Actively seeking QA opportunities. ## Reach out if you’re hiring or know someone who is.##
 
 ---
 
