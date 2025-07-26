@@ -113,11 +113,20 @@ from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.webdriver.support import expected_conditions as ec
 ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 import allure
+import os
 
 
 @pytest.fixture(scope='function')
 def setup():
-    driver=webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(options=options)
     driver.get("https://practice.expandtesting.com/dropdown")
     yield driver 
     driver.quit()
@@ -182,7 +191,15 @@ ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 @pytest.fixture(scope='function')
 def setup2():
-    driver=webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(options=options)
     driver.get("https://the-internet.herokuapp.com/javascript_alerts")
     yield driver
     driver.quit() 
@@ -250,7 +267,15 @@ ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 @pytest.fixture(scope='function')
 def setup3():
-    driver=webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(options=options)
     driver.get("https://the-internet.herokuapp.com/upload") 
     yield driver
     driver.quit() 
