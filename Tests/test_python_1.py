@@ -297,7 +297,8 @@ def test_drop(setup3):
     
     try:
         filep=WDW(driver,5).until(ec.visibility_of_element_located((By.ID,"file-upload")))
-        filep.send_keys(r"D:\test_journey\smart_cctv.txt")
+        file_path = os.path.abspath("smart_cctv.txt")
+        filep.send_keys(file_path)
         time.sleep(4)
         WDW(driver,5).until(ec.element_to_be_clickable((By.ID,"file-submit"))).click()
         time.sleep(2)

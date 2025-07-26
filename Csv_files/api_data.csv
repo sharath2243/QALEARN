@@ -5,7 +5,7 @@ GET,/users/2,,200
 GET,/users/150,,404
 POST,/users,"{""username"":""ganesh_30"",""password"":""@*thetlk78""}",201
 POST,/users,"{""username"":""lord23"",""password"":""""}",201
-DELETE,/users/28,,200
+DELETE,/users/25,,200
 DELETE,/users/100,,404
 DELETE,/users,,400
 HEAD,/users,,200
@@ -19,7 +19,7 @@ GET,/products/10,,200
 GET,/products/99,,404
 POST,/products/3,"{""name"":""bat"",""description"":""a cricket bat which is used for batting"",""price"":""79.00"",""image"":""NONE""}",400
 POST,/products,"{""name"":""bat"",""description"":""a cricket bat which is used for batting"",""price"":""79.00"",""image"":""NONE""}",201
-DELETE,/products/23,,200
+DELETE,/products/24,,200
 DELETE,/products/369,,404
 DELETE,/products,,400
 HEAD,/products/19,,200
