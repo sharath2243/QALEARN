@@ -52,7 +52,7 @@
 
 # 4. Saucedemo.com (UI)
 - Test Case ID: TC_UI-004
-- Title: *Verify Remove button functionality *
+- Title: *Verify Remove button functionality*
 - Priority: Medium
 - Severity: Major
 - Preconditions: 
@@ -64,3 +64,53 @@
 - Actual Outcome: Clicking `Remove` does not remove the product.
 - Status: FAIL
 
+# 5. MOCKAPI (API):
+- Test Case ID: TC_API_001
+- Title: *Verify PATCH Request Updates User Data Successfully*
+- Priority: Medium
+- Severity: Normal
+- Preconditions:
+  - Given API Endpoint exists.( '/users/1' )
+  - Header is included with `{"content-type":"application/json"}`
+- Steps:
+  - Send PATCH request to /users/1 with partial update data("{"username":"jarvis_69"}")
+- Expected Outcome:
+  - Response status code is 200 OK
+  - Response body contains the updated user with the new quantity set to "jarvis_69"
+  - Other fields remain unchanged
+- Actual Outcome:
+  - Response status code is 200 OK
+  - Response body contains the updated user with the new quantity set to "jarvis_69"
+  - Other fields remain unchanged
+- Status: PASS
+
+# 6. MOCKAPI (API):
+- Test Case ID: TC_API_002
+- Title: *Verify PATCH Request Updates Product Data (invalid)*
+- Priority: Medium
+- Severity: Normal
+- Preconditions:
+  - Given API Endpoint exists.( '/products/1' )
+  - Header is included with `{"content-type":"application/json"}`
+- Steps:
+  - Send PATCH request to /products/87 with partial update data("{"name":"jug"}")
+- Expected Outcome:
+  - Response status code is 404 Not Found
+- Actual Outcome:
+  - Response status code is 400 Not Found
+- Status: PASS
+
+# 7. Reqres.in (API):
+- Test Case ID: TC_API_003
+- Title: *verify login functionality*
+- Priority: High
+- Severity: Critical
+- Preconditions:
+  - API Endpoint exists (`/api/login/`)
+- Steps:
+  - Send POST request to `/api/login` with valid mail and password and include the api key in the header.
+- Expected Outcome:
+  - Response status code is 201 Created
+- Actual Outcome:
+  - Response status code is 201 Created
+- Status: PASS
