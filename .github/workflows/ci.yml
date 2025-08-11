@@ -4,9 +4,11 @@ on :
   push:
     paths-ignore:
       - 'README.md'
+      - 'Test_cases.md'
   pull_request:
     paths-ignore:
       - 'README.md'
+      - 'Test_cases.md'
 
 
 jobs:

@@ -1,4 +1,4 @@
-from selenium import webdriver
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait as WDW
@@ -10,29 +10,14 @@ import allure #allure imported
 ts=datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 
 
-@pytest.fixture
-def setup():
-    options = webdriver.ChromeOptions()
-    
-    # ✅ Enable headless only in GitHub Actions
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--window-size=1920,1080")
-    
-    driver = webdriver.Chrome(options=options)
-    yield driver
-    driver.quit()
-
 @pytest.mark.flaky(reruns=4,reruns_delay=2) #useful for flaky test retry 2 times with 2 seconds delay
 @pytest.mark.smoke #smoke testing (added it in pytest.ini before)
-@pytest.mark.regression
+@pytest.mark.ui
 @allure.title("Learning experiment on demoqa.com")
-@allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic ")
+@allure.description("This test tests flaky test check,smoke testing, without impleemnting re-run logic by Sharath Bhat ")
 @allure.severity(allure.severity_level.NORMAL)
-def test_crawl(setup): #function inherits something from setup function above
-    driver=setup
+def test_crawl(setup2): #function inherits something from setup function above
+    driver=setup2
     driver.get("https://demoqa.com/modal-dialogs")
      
     #ad block logic (chatgpt gave me i wrote!)

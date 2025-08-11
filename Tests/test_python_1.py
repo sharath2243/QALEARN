@@ -113,32 +113,17 @@ from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.webdriver.support import expected_conditions as ec
 ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 import allure
-import os
 
-
-@pytest.fixture(scope='function')
-def setup():
-    options = webdriver.ChromeOptions()
-
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--window-size=1920,1080")
-
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://practice.expandtesting.com/dropdown")
-    yield driver 
-    driver.quit()
-
+   
 @pytest.mark.smoke
-@pytest.mark.regression
+@pytest.mark.ui
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
 @allure.title("Random curiosity tries")
 @allure.description("tested by- sharath Bhat for dropdown")
 @allure.step("dropdown check!")
-def test_sel(setup):
-    driver=setup
+def test_sel(setup2):
+    driver=setup2
+    driver.get("https://practice.expandtesting.com/dropdown")
     try:
         dropdown_ele=WDW(driver,5).until(ec.visibility_of_element_located((By.ID,"dropdown")))
         dropdown=Select(dropdown_ele) #select must-do
@@ -148,7 +133,7 @@ def test_sel(setup):
 
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"dropdown_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/dropdown_failure_{ts}.png")
         raise e
     time.sleep(3)
 
@@ -160,7 +145,7 @@ def test_sel(setup):
         print("2nd success!")
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"2nd_dropdown_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/2nd_dropdown_failure_{ts}.png")
         raise e
     time.sleep(3)
 
@@ -172,7 +157,7 @@ def test_sel(setup):
         print("3rd success!")
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"3rd_dropdown_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/3rd_dropdown_failure_{ts}.png")
         raise e
     time.sleep(3)
 
@@ -189,28 +174,15 @@ from selenium.webdriver.support.ui import WebDriverWait as WDW
 from selenium.webdriver.support import expected_conditions as ec
 ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-@pytest.fixture(scope='function')
-def setup2():
-    options = webdriver.ChromeOptions()
-
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--window-size=1920,1080")
-
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://the-internet.herokuapp.com/javascript_alerts")
-    yield driver
-    driver.quit() 
-
 @pytest.mark.smoke
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
+@pytest.mark.ui
 @allure.title("Random curiosity tries")
 @allure.description("tested by- sharath Bhat for alerts,prompts,confirmation message")
 @allure.step("alert,prompt checks!")
 def test_func(setup2):
     driver=setup2
+    driver.get("https://the-internet.herokuapp.com/javascript_alerts")
     try:
         WDW(driver,5).until(ec.element_to_be_clickable(driver.find_element(By.XPATH,"//button[contains(text(),'Alert')]"))).click() #alert it is!
         alert=driver.switch_to.alert #alert must-use 
@@ -221,7 +193,7 @@ def test_func(setup2):
 
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"alert_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/alert_failure_{ts}.png")
         raise e
     
     try:
@@ -234,7 +206,7 @@ def test_func(setup2):
 
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"confirm_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/confirm_failure_{ts}.png")
         raise e
     
     try:
@@ -248,7 +220,7 @@ def test_func(setup2):
 
     except Exception as e:
         print("exception caught!")
-        driver.save_screenshot(f"prompt_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/prompt_failure_{ts}.png")
         raise e
     time.sleep(3)
     
@@ -263,30 +235,17 @@ from datetime import datetime
 from selenium.webdriver.support.ui import WebDriverWait as WDW 
 from selenium.webdriver.support import expected_conditions as ec
 ts=datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
-
-@pytest.fixture(scope='function')
-def setup3():
-    options = webdriver.ChromeOptions()
-
-    if os.getenv("GITHUB_ACTIONS") == "true":
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--window-size=1920,1080")
-
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://the-internet.herokuapp.com/upload") 
-    yield driver
-    driver.quit() 
+import os 
 
 @pytest.mark.smoke
+@pytest.mark.ui
 @pytest.mark.flaky(reruns=2,reruns_delay=2)
 @allure.title("Random curiosity tries")
 @allure.description("tested by- sharath Bhat for file input")
 @allure.step("file input try!")
-def test_drop(setup3):
-    driver=setup3
+def test_drop(setup2):
+    driver=setup2
+    driver.get("https://the-internet.herokuapp.com/upload") 
 
     #ad overcome logic
     driver.execute_script("""
@@ -307,5 +266,5 @@ def test_drop(setup3):
 
     except Exception as e:
         print("exception caught!",e)
-        driver.save_screenshot(f"fileupload_failure_{ts}.png")
+        driver.save_screenshot(f"Screenshots/fileupload_failure_{ts}.png")
         raise e

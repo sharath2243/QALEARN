@@ -43,7 +43,7 @@ for test in test_cases:
 '''
 
 #day-5: above same thing but with using pytest(without for loop and try catch finally)
-
+'''
 @pytest.fixture #day-6: using pytest.fixture for recurring setup-teardown
 def setup():
     options = webdriver.ChromeOptions()
@@ -58,7 +58,7 @@ def setup():
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
-
+'''
 @allure.step("reading login data..")
 def read_login_data(): # function for reading the login data
     filepath = os.path.join(os.path.dirname(__file__),"..","Csv_files","login_details.csv")
@@ -82,13 +82,14 @@ def read_remove_prod(): #day-8:function to reading the remove product data
     
 @pytest.mark.smoke
 @pytest.mark.regression
+@pytest.mark.ui
 @pytest.mark.parametrize("test", read_login_data()) 
 @allure.title("Selenium automation on saucedemo.com")
 @allure.description("Tested By: Sharath R Bhat")
 @allure.severity(allure.severity_level.NORMAL)
-def test_data(setup,test):
+def test_data(setup2,test):
 
-    driver=setup #using pytest.fixture setup
+    driver=setup2 #using pytest.fixture setup
 
     login=Login_pom(driver) #created a class object
     login.load() # calling load function,loading website 
@@ -103,7 +104,8 @@ def test_data(setup,test):
     else:
         assert err is None, "no errors still login not sucessful!"
         print(f"[✅ PASS] Login successful!")
-       
+        print(driver.current_url)
+        
 
         product=Product_pom(driver) #created a class object
         time.sleep(4)
@@ -111,27 +113,27 @@ def test_data(setup,test):
         product.poduct_title() #only for 1 i have checked.
         print("[✅ PASS] Title check,description check!")
 
-        try:
-            for item in read_add_prod(): #day-7:iterating through csv read function
+        for item in read_add_prod():#day-7:iterating through csv read function  
+            try:
                 time.sleep(2) 
-                res=product.add_product(item["product_id"]) #adding each product
-                assert res is None,res
-            print("[✅ PASS] Product added successfuly!")
+                product.add_product(item["product_id"]) #adding each product
+                #assert res is None,res
+    
+            except Exception as e:
+                driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png") #day-8: introduced save screenshots if any error
+                raise e
+        print("[✅ PASS] Product added successfuly!")
 
-        except Exception as e:
-            driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png") #day-8: introduced save screenshots if any error
-            raise e
-
-        try:
-            for item in read_remove_prod(): #day-8: iterating through csv read function
+        for item in read_remove_prod(): #day-8: iterating through csv read function 
+            try:
                 time.sleep(2)
-                res=product.remove_product(item["product_id"])
-                assert res is None,res
-            print("[✅ PASS] Products removed successfuly!")
-
-        except Exception as e:
-            driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png")
-            raise e
+                product.remove_product(item["product_id"])
+                #assert res is None,res
+            
+            except Exception as e:
+                driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png")
+                raise e
+        print("[✅ PASS] Products removed successfuly!")
 
 
         time.sleep(4) #day-7: knowingly including delays..

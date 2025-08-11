@@ -30,25 +30,25 @@ class Product_pom:
         try:
             WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID,product_id))).click()
         except TimeoutException:
-            return "something went wrong!!"
+            raise Exception (f"something went wrong(adding product)!!")
         
     def go_to_cart(self): #day-6:go to cart
         try:
            WDW(self.driver,4).until(ec.element_to_be_clickable((self.cart_icon))).click()
         except TimeoutException:
-            return "failed"
+            raise "failed (cart)"
 
     def go_back(self):
         try:
             WDW(self.driver,4).until(ec.element_to_be_clickable((self.goback))).click()
         except TimeoutException:
-            return "failed"
+            raise "failed (back from cart)"
     
     def remove_product(self,product_id): #day-8:multi product remove by csv
         try:
             WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID,product_id))).click()
         except TimeoutException:
-            return "something went wrong!!"
+            raise Exception(f"something went wrong (removing product)!!")
         
         
     def poduct_title(self): #day-7: function to check title and come back button check
@@ -57,6 +57,6 @@ class Product_pom:
             time.sleep(4)
             WDW(self.driver,4).until(ec.element_to_be_clickable((By.ID,"back-to-products"))).click()
         except TimeoutException:
-            return "Error!"
+            return "Error!(product title)"
     
    
