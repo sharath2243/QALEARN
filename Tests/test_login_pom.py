@@ -117,7 +117,7 @@ def test_data(setup2,test):
             try:
                 time.sleep(2) 
                 product.add_product(item["product_id"]) #adding each product
-                #assert res is None,res
+                
     
             except Exception as e:
                 driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png") #day-8: introduced save screenshots if any error
@@ -128,7 +128,7 @@ def test_data(setup2,test):
             try:
                 time.sleep(2)
                 product.remove_product(item["product_id"])
-                #assert res is None,res
+                
             
             except Exception as e:
                 driver.save_screenshot(f"Screenshots/{item['product_id']}_{ts}.png")
