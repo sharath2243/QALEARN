@@ -50,7 +50,7 @@
   - The products which are added by the user is visible with it's description and price tag.
 - Status : PASS
 
-# 4. Saucedemo.com (UI)
+## 4. Saucedemo.com (UI)
 - Test Case ID: TC_UI-004
 - Title: *Verify Remove button functionality*
 - Priority: Medium
@@ -64,7 +64,7 @@
 - Actual Outcome: Clicking `Remove` does not remove the product.
 - Status: FAIL
 
-# 5. MOCKAPI (API):
+## 5. MOCKAPI (API):
 - Test Case ID: TC_API_001
 - Title: *Verify PATCH Request Updates User Data Successfully*
 - Priority: Medium
@@ -76,15 +76,15 @@
   - Send PATCH request to /users/1 with partial update data("{"username":"jarvis_69"}")
 - Expected Outcome:
   - Response status code is 200 OK
-  - Response body contains the updated user with the new quantity set to "jarvis_69"
+  - Response body contains the updated user with the new username set to "jarvis_69"
   - Other fields remain unchanged
 - Actual Outcome:
   - Response status code is 200 OK
-  - Response body contains the updated user with the new quantity set to "jarvis_69"
+  - Response body contains the updated user with the new username set to "jarvis_69"
   - Other fields remain unchanged
 - Status: PASS
 
-# 6. MOCKAPI (API):
+## 6. MOCKAPI (API):
 - Test Case ID: TC_API_002
 - Title: *Verify PATCH Request Updates Product Data (invalid)*
 - Priority: Medium
@@ -114,3 +114,4 @@
 - Actual Outcome:
   - Response status code is 201 Created
 - Status: PASS
+
