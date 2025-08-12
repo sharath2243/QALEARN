@@ -153,6 +153,11 @@ This is a Python-based automation framework using Selenium WebDriver for browser
 - Upload test artifacts using actions/upload-artifact@v4.
 
 ---
+### 📅 11/08/2025 - Summary
+- Wrote test cases.
+- Wrote `conftest.py`, which had common fixture for Ui tests.
+
+---
 ## 🧠 Skills Covered So Far
 
 - ✅ Selenium WebDriver (Chrome)
@@ -198,6 +203,7 @@ This is a Python-based automation framework using Selenium WebDriver for browser
 - ✅ Learnt about responses(The responses library is a mock server specifically designed for mocking out requests in Python.)
 - ✅ Explored prompts,alerts,dropdwon, select options dropdown, file input handling through selenium.
 - ✅ mocked ad-skipping using driver.excute_script.
+- ✅ Created `conftest.py`, wrote a shared fixture for Ui tests.
 ---
 
 ## 🚀 How to Run
