@@ -100,7 +100,7 @@
   - Response status code is 400 Not Found
 - Status: PASS
 
-# 7. Reqres.in (API):
+## 7. Reqres.in (API):
 - Test Case ID: TC_API_003
 - Title: *verify login functionality*
 - Priority: High
@@ -114,4 +114,20 @@
 - Actual Outcome:
   - Response status code is 201 Created
 - Status: PASS
+
+## 8. Reqres.in (API):
+- Test Case ID: TC_API_004
+- Title: *verify login functionality*
+- Priority: High
+- Severity: Critical
+- Preconditions:
+  - API Endpoint exists (`/api/login/`)
+- Steps:
+  - Send POST request to `/api/login` with valid mail and password.
+- Expected Outcome:
+  - 400 Bad Request.
+- Actual Outcome:
+  - 400 Bad Request.
+- Status: PASS
+
 
